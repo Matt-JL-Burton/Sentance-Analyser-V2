@@ -15,4 +15,4 @@ _**Current Issues:**_
 - Trying to pair pronouns to proper nouns and nouns. E.g. He - Jerrald, They - Tigers etc (but in conext it is obviosubl more complex)
     - There are two main types of co-references between pronouns and nouns, anaphora (after) and cataphora (before), where the before/after refers to the positon of pronoun (or equivilent) in relation to the [proper] noun
     - pleontasitc 'it', for example "It was raining heavily" - the refers to nothing but is still requird.
-- Need ti intergrate co-referentails
+- Need t0 intergrate co-referentails
