@@ -1,15 +1,17 @@
 from matplotlib.pyplot import get
 
 from general import getSentanceENG
+from sentanceAnalysis import token
 
 
 def combineNouns(sentance, flag):
     if flag:
         i = 1
         while i <= (len(sentance)-2):
-            if sentance[i].typeArb == sentance[i+1].typeArb and sentance[i].typeArb[0]  == "N":
-                sentance[i].word = sentance[i].word + " " + sentance[i+1].word
-                sentance.pop(i+1)
+            if sentance[i] != None:
+                if sentance[i].typeArb == sentance[i+1].typeArb and sentance[i].typeArb[0]  == "N":
+                    sentance[i].word = sentance[i].word + " " + sentance[i+1].word
+                    sentance[i+1] = token("<Null Marker>","<Null Marker>","<Null Marker>")
             i = i + 1 
     return sentance
 

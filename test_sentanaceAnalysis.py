@@ -1,7 +1,7 @@
 from cgi import test
 import unittest
 import nltk 
-from main import splitTextSen, tokenizeText, ensuingAdjNoun, verbAdverb, nounVerbAdjective, removeStopWords, taggingText, instantiationText, prepareText, deAbreviate
+from main import splitTextSen, tokenizeText, ensuingAdjNoun, verbAdverb, nounVerbAdjective, removeStopWords, taggingText, instantiationText, prepareText, deAbreviate, preCoRefPreparation, addCoRefrenceRels
 from sentanceAnalysis import token
 from general import *
 from nouns import combineNouns
@@ -62,6 +62,7 @@ class tests(unittest.TestCase):
     def test_combineNouns(self):
         test_Sentance1 = prepareText("I love this boy band",False)[0]
         self.assertEqual(combineNouns((test_Sentance1),True)[3].word,"boy band")
+        self.assertEqual(combineNouns((test_Sentance1),True)[4].word,"<Null Marker>")
         test_Sentance2 = prepareText("Look at this mountain lion",False)[0]
         self.assertEqual(combineNouns((test_Sentance2),True)[3].word,"mountain lion")
         test_Sentance3 = prepareText("The wooden spoon couldn't cut",False)[0]
@@ -152,8 +153,29 @@ class tests(unittest.TestCase):
         self.assertFalse(test_Sentance4[4].pointerWord,"elephant")
 
     def test_sameSentancePronounLinking(self):
-        self.assertEqual(1,0)
-
+        test_Sentance1 = "Barry looked lost. He was depressed"
+        test_Sentance1_Prep = prepareText(test_Sentance1,False)
+        addCoRefrenceRels(preCoRefPreparation(test_Sentance1),test_Sentance1_Prep)
+        self.assertEqual(test_Sentance1_Prep[0][0].coRefNum,0)
+        self.assertEqual(test_Sentance1_Prep[1][0].coRefNum,0)
+        self.assertEqual(test_Sentance1_Prep[1][1].coRefNum,None)
+        test_Sentance2 = """Mr. Dursley was the director of a firm called
+Grunnings, which made drills. He was a big, beefy
+man with hardly any neck, although he did have a
+very large mustache. Mrs. Dursley was thin and
+blonde and had nearly twice the usual amount of
+neck, which came in very useful as she spent so
+much of her time craning over garden fences, spying
+on the neighbors. The Dursley s had a small son
+called Dudley and in their opinion there was no finer
+boy anywhere."""
+        test_Sentance2_Prep = prepareText(test_Sentance2,False)
+        addCoRefrenceRels(preCoRefPreparation(test_Sentance2),test_Sentance2_Prep)
+        self.assertEqual(test_Sentance2_Prep[0][1].coRefNum,0)
+        self.assertEqual(test_Sentance2_Prep[1][0].coRefNum,0)
+        self.assertEqual(test_Sentance2_Prep[1][13].coRefNum,0)
+        self.assertEqual(test_Sentance2_Prep[2][1].coRefNum, 1)
+        self.assertEqual(test_Sentance2_Prep[2][22].coRefNum, 1)
 
 if __name__ == '__main__':  
     unittest.main() 

@@ -7,7 +7,7 @@ class token:
         self.pointerWord = None
         self.strength = 0
         self.relType = None
-        self.coRefNum = 0
+        self.coRefNum = None
 
     def setPointer(self, pointer):
         self.pointer = pointer
@@ -27,4 +27,9 @@ class token:
     def getStrength(self):
         return self.strength
     
+    def setCoRefNum(self,num):
+        if self.coRefNum == None:
+            self.coRefNum = num
+        else:
+            raise Exception("Error: CoRefNum already set")
     

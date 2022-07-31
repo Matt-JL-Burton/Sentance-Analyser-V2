@@ -1,6 +1,3 @@
-from matplotlib.pyplot import text
-
-
 def change_letter(text, letter, index):
     return text[:index] + letter + text[index+1:]
 
@@ -22,7 +19,7 @@ def decimalPlaceAdding(text):
 
 def printrelations(sentance):
     for i in range(len(sentance)):
-        if sentance[i].pointer != None:
+        if sentance[i].pointer != None or sentance[i].coRefNum != None:
             print(vars(sentance[i]))
 
 def seeProgress(sentance, flag):
@@ -99,6 +96,7 @@ abrDict = {
 ":":"colon or ellipsis",
 "SYM":"symbol",
 "WP$": "WH-pronoun, possessive",
+"<Null Marker>":"<Null Marker>", # This is to show where the 2nd half of a composite noun was so as to allow for easier corefernital analysis
 }
 
 text2 = """
