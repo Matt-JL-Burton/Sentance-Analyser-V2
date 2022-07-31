@@ -1,3 +1,4 @@
+print("Gathering Imports")
 from re import I
 import nltk
 from nltk.tokenize.stanford import StanfordTokenizer
@@ -13,8 +14,9 @@ from adjective import isAdj
 from adverb import isAdverb
 from verb import isVerb
 from coReferenceModelCreation import nlp
-
 stop_words = (set(stopwords.words('english')))
+
+print("Program Started")
 
 def prepareText(para,stopWordFlag):
     para = para.replace("\n"," ")
@@ -170,7 +172,7 @@ para = prepareText(text2,False)
 
 chains = chaining(textForChaining) 
 for i in range(len(chains)):
-    print(i)
+    pass
 
 for sentance in para:
     combineNouns(sentance,True)
@@ -178,3 +180,5 @@ for sentance in para:
     nounVerbAdjective(sentance)
     verbAdverb(sentance)
     seeProgress(sentance,False)
+
+print("Program Finished")
