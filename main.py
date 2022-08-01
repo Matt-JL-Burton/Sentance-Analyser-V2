@@ -188,6 +188,7 @@ para = prepareText(text2,False)
 addCoRefrenceRels(textForChaining,para)
 
 for sentance in para:
+    
     combineNouns(sentance,True)
     ensuingAdjNoun(sentance)
     nounVerbAdjective(sentance)
