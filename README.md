@@ -7,7 +7,6 @@ A work experience project that aims to try and understand the purpose of differe
 	- Coreference Resolution : https://towardsdatascience.com/intro-to-coreference-resolution-in-nlp-19788a75adee
 <br>
 <br>
-
 _**Current Issues:**_
 - The current tagger could be imporved
     - This could be done by using a personally curated tagger as seen in, by combining taggers and training test data. I can do this however I don't think the results would be better than using the current imperfect tagger
