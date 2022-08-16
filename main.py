@@ -192,6 +192,6 @@ for sentance in para:
     ensuingAdjNoun(sentance)
     nounVerbAdjective(sentance)
     verbAdverb(sentance)
-    seeProgress(sentance,True)
+    seeProgress(sentance,False)
 
 print("Program Finished")
